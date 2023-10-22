@@ -1,0 +1,6 @@
+POST localhost:8080/rent
+Content-Type: application/json
+
+{
+  "cycleID": "1"
+ }
