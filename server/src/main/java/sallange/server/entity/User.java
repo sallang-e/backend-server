@@ -15,7 +15,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User {
+public class User extends BaseDate{
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
