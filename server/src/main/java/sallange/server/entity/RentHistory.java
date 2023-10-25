@@ -5,11 +5,13 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -24,4 +26,10 @@ public class RentHistory extends BaseDate {
 
     @Enumerated(STRING)
     private RentType type;
+
+    public RentHistory(final Long userId, final Long cycleId, final RentType type) {
+        this.userId = userId;
+        this.cycleId = cycleId;
+        this.type = type;
+    }
 }
