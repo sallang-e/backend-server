@@ -28,6 +28,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
     implementation 'mysql:mysql-connector-java:8.0.27'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-mysql'
 
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'io.rest-assured:rest-assured:5.3.1'
