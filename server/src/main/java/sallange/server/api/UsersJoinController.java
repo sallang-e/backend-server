@@ -16,12 +16,12 @@ import java.net.URI;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/util")
+@RequestMapping("/users")
 public class UsersJoinController {
 
     private final UsersRepository usersRepository;
 
-    @PostMapping("/users")
+    @PostMapping
     @Transactional
     public ResponseEntity<Void> join(@RequestBody final UserJoinRequest request) {
         final Users users = usersRepository.save(
