@@ -12,7 +12,7 @@ import static sallange.server.acceptance.step.CycleCreateStep.살랑이_생성_�
 import static sallange.server.acceptance.step.RentStep.살랑이_대여_요청;
 import static sallange.server.acceptance.step.UsersJoinStep.회원_가입_요청하고_아이디_반환;
 
-class RentAcceptanceTest extends AcceptanceTest {
+class CycleRentAcceptanceTest extends AcceptanceTest {
 
     @Test
     void 살랑이_정상_대여() {
