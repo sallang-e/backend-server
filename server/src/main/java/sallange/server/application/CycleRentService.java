@@ -18,7 +18,7 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 @Service
 @Transactional
-public class RentService {
+public class CycleRentService {
 
     private final UsersRepository usersRepository;
     private final CycleRepository cycleRepository;

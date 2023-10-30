@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sallange.server.api.request.RentRequest;
-import sallange.server.application.RentService;
+import sallange.server.application.CycleRentService;
 
 import java.net.URI;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/rent")
-public class RentController {
+public class CycleRentController {
 
-    private final RentService rentService;
+    private final CycleRentService cycleRentService;
 
     @PostMapping("/{userId}")
     public ResponseEntity<Void> rent(
             @PathVariable Long userId,
             @RequestBody RentRequest request
     ) {
-        final Long rentHistoryId = rentService.rent(userId, request);
+        final Long rentHistoryId = cycleRentService.rent(userId, request);
 
         return ResponseEntity
                 .created(URI.create("/rent-history/" + rentHistoryId))
