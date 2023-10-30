@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.IDENTITY;
+import static sallange.server.entity.RentType.RETURN;
 
 @Getter
 @AllArgsConstructor
@@ -29,5 +30,9 @@ public class RentHistory extends BaseDate {
 
     public RentHistory(final Long userId, final Long cycleId, final RentType type) {
         this(null, userId, cycleId, type);
+    }
+
+    public void returnCycle() {
+        this.type = RETURN;
     }
 }

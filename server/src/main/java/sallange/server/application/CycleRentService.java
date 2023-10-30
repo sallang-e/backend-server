@@ -26,7 +26,7 @@ public class CycleRentService {
 
     public Long rent(final Long userId, final RentRequest request) {
         final Users users = usersRepository.findById(userId)
-                .orElseThrow(NoSuchElementException::new);
+                .orElseThrow(() -> new NoSuchElementException("[ERROR] 해당 아이디의 유저는 존재하지 않습니다."));
 
         if (!users.isAvailable()) {
             throw new RentException(3, "[ERROR] 살랑이 사용 가능 회수가 없는 유저입니다!");
