@@ -28,8 +28,6 @@ public class RentHistory extends BaseDate {
     private RentType type;
 
     public RentHistory(final Long userId, final Long cycleId, final RentType type) {
-        this.userId = userId;
-        this.cycleId = cycleId;
-        this.type = type;
+        this(null, userId, cycleId, type);
     }
 }
