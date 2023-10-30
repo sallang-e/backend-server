@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface RentHistoryRepository extends JpaRepository<RentHistory, Long> {
 
     Optional<RentHistory> findByUserIdAndType(Long userId, RentType type);
+
+    Optional<RentHistory> findByCycleIdAndType(Long cycleId, RentType rentType);
 }

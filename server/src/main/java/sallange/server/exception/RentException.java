@@ -1,5 +1,8 @@
 package sallange.server.exception;
 
+import lombok.Getter;
+
+@Getter
 public class RentException extends RuntimeException {
 
     private final Integer errorCode;

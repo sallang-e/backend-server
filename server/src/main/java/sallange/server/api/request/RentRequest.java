@@ -12,4 +12,9 @@ import lombok.ToString;
 public class RentRequest {
 
     private String cycleID;
+
+    public static RentRequest from(final Long cycleId) {
+        final String encryptedCycleId = String.valueOf(cycleId);
+        return new RentRequest(encryptedCycleId);
+    }
 }

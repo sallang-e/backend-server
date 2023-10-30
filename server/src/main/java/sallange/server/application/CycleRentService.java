@@ -32,11 +32,15 @@ public class CycleRentService {
             throw new RentException(3, "[ERROR] 살랑이 사용 가능 회수가 없는 유저입니다!");
         }
 
+        if (rentHistoryRepository.findByUserIdAndType(userId, RentType.RENT).isPresent()) {
+            throw new RentException(4, "[ERROR] 해당 유저는 이미 살랑이를 대여중입니다!");
+        }
+
         final Long cycleId = decryptCycleId(request.getCycleID());
         final Cycle cycle = cycleRepository.findById(cycleId).orElseThrow(() -> new NoSuchElementException("[ERROR] 존재하지 않는 살랑이입니다."));
 
         if (cycle.isRent()) {
-            throw new RentException(4, "[ERROR] 다른 사용자가 이미 사용중인 살랑이입니다!");
+            throw new RentException(1, "[ERROR] 다른 사용자가 이미 사용중인 살랑이입니다!");
         }
 
         if (cycle.isBroken()) {

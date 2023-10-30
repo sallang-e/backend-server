@@ -129,7 +129,7 @@ Location: /rent-history/1
 ```json
 {
   "errorCode": 4,
-  "errorMessage": "[ERROR] 다른 사용자가 이미 사용중인 살랑이입니다!"
+  "errorMessage": "[ERROR] 해당 유저는 이미 살랑이를 대여중입니다!"
 }
 ```
 
