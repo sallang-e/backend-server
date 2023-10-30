@@ -31,6 +31,8 @@
 
 ### ✔ ️살랑이 대여
 
+- 유저의 휴대전화에서 보내는 요청임.
+
 #### Request
 
 ##### URL & Header
@@ -133,6 +135,8 @@ Location: /rent-history/1
 
 ### ✔ 살랑이 반납
 
+- 살랑이 디바이스에서 보내는 요청임.
+
 #### Request
 
 ##### Header
@@ -159,3 +163,34 @@ Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 ```http request
 200 OK HTTP/1.1
 ```
+
+### ✔️ 살랑이 디바이스의 대여 여부 확인
+
+- 살랑이 디바이스에서 보내는 요청임.
+- 살랑이가 대여 가능(`AVAILABLE`)한 경우에, 어떤 유저든 대여했을 경우에 대비해 1초마다 health check를 보내는 API다.
+
+#### Request
+
+##### Header
+
+```http request
+GET api.sallang-e.or.kr/is-rent
+```
+
+##### Body
+
+```bash
+{
+	"cycleID": "jkl32hjherjfhuio2i2jk3kj3k" 
+}
+```
+
+#### Response
+
+```bash
+{
+	"isRent": "true"
+}
+```
+
+- 현재 어떤 유저든 해당 살랑이를 대여중이라면 `true를` 반환한다.
