@@ -3,7 +3,7 @@ package sallange.server.acceptance.step;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
-import sallange.server.api.request.UserJoinRequest;
+import sallange.server.auth.api.request.UserJoinRequest;
 
 import static io.restassured.http.ContentType.JSON;
 

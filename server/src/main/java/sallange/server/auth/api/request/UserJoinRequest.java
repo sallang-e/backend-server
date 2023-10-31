@@ -1,4 +1,4 @@
-package sallange.server.api.request;
+package sallange.server.auth.api.request;
 
 public class UserJoinRequest {
 
