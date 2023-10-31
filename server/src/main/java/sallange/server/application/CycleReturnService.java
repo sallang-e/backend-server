@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import sallange.server.entity.Cycle;
 import sallange.server.entity.RentHistory;
 import sallange.server.entity.RentType;
-import sallange.server.entity.Users;
+import sallange.server.entity.User;
 import sallange.server.repository.CycleRepository;
 import sallange.server.repository.RentHistoryRepository;
 import sallange.server.repository.UsersRepository;
@@ -21,19 +21,19 @@ public class CycleReturnService {
     private final CycleRepository cycleRepository;
 
     public void returnCycle(final Long userId) {
-        final Users user = findUser(userId);
+        final User user = findUser(userId);
         final RentHistory rentHistory = findRentHistory(user);
         final Cycle cycle = findCycle(rentHistory.getCycleId());
         rentHistory.returnCycle();
         cycle.available();
     }
 
-    private Users findUser(final Long userId) {
+    private User findUser(final Long userId) {
         return usersRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("[ERROR] 해당 아이디의 유저는 존재하지 않습니다."));
     }
 
-    private RentHistory findRentHistory(final Users user) {
+    private RentHistory findRentHistory(final User user) {
         return rentHistoryRepository.findByUserIdAndType(user.getId(), RentType.RENT)
                 .orElseThrow(() -> new NoSuchElementException("[ERROR] 해당 유저가 현재 대여중인 살랑이가 없습니다."));
     }

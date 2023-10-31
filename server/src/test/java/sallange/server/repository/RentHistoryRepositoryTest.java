@@ -8,7 +8,7 @@ import sallange.server.entity.Cycle;
 import sallange.server.entity.CycleStatus;
 import sallange.server.entity.RentHistory;
 import sallange.server.entity.RentType;
-import sallange.server.entity.Users;
+import sallange.server.entity.User;
 
 import java.util.Optional;
 
@@ -34,8 +34,8 @@ class RentHistoryRepositoryTest {
         final Cycle cycle3 = cycleRepository.save(new Cycle(CycleStatus.AVAILABLE));
         final Cycle cycle4 = cycleRepository.save(new Cycle(CycleStatus.AVAILABLE));
 
-        final Users gitchan = usersRepository.save(new Users("깃짱", OAuthProvider.KAKAO, 123L, 2));
-        final Users hoonchan = usersRepository.save(new Users("훈짱", OAuthProvider.KAKAO, 124L, 1));
+        final User gitchan = usersRepository.save(new User("깃짱", OAuthProvider.KAKAO, 123L, 2));
+        final User hoonchan = usersRepository.save(new User("훈짱", OAuthProvider.KAKAO, 124L, 1));
 
         final RentHistory rentHistory = rentHistoryRepository.save(new RentHistory(
                 gitchan.getId(),

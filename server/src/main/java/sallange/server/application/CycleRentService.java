@@ -7,7 +7,7 @@ import sallange.server.api.request.RentRequest;
 import sallange.server.entity.Cycle;
 import sallange.server.entity.RentHistory;
 import sallange.server.entity.RentType;
-import sallange.server.entity.Users;
+import sallange.server.entity.User;
 import sallange.server.exception.RentException;
 import sallange.server.repository.CycleRepository;
 import sallange.server.repository.RentHistoryRepository;
@@ -25,7 +25,7 @@ public class CycleRentService {
     private final RentHistoryRepository rentHistoryRepository;
 
     public Long rent(final Long userId, final RentRequest request) {
-        final Users user = usersRepository.findById(userId)
+        final User user = usersRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("[ERROR] 해당 아이디의 유저는 존재하지 않습니다."));
 
         if (!user.isAvailable()) {

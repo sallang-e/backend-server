@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sallange.server.api.request.UserJoinRequest;
 import sallange.server.auth.OAuthProvider;
-import sallange.server.entity.Users;
+import sallange.server.entity.User;
 import sallange.server.repository.UsersRepository;
 
 import java.net.URI;
@@ -24,8 +24,8 @@ public class UsersJoinController {
     @PostMapping
     @Transactional
     public ResponseEntity<Void> join(@RequestBody final UserJoinRequest request) {
-        final Users users = usersRepository.save(
-                new Users(
+        final User user = usersRepository.save(
+                new User(
                         request.getName(),
                         OAuthProvider.from(request.getoAuthProvider()),
                         request.getoAuthId(),
@@ -34,7 +34,7 @@ public class UsersJoinController {
         );
 
         return ResponseEntity
-                .created(URI.create("/users/" + users.getId()))
+                .created(URI.create("/users/" + user.getId()))
                 .build();
     }
 }

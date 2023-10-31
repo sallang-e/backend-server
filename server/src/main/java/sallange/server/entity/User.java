@@ -5,13 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import sallange.server.auth.OAuthProvider;
 
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
-public class Users extends BaseDate {
+@Table(name = "users")
+public class User extends BaseDate {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -26,7 +28,7 @@ public class Users extends BaseDate {
     private Long oAuthId;
     private Integer leftRentCount;
 
-    public Users(final Long id, final String name, final OAuthProvider oAuthProvider, final Long oAuthId, final Integer leftRentCount) {
+    public User(final Long id, final String name, final OAuthProvider oAuthProvider, final Long oAuthId, final Integer leftRentCount) {
         this.id = id;
         this.name = name;
         this.oAuthProvider = oAuthProvider;
@@ -34,11 +36,11 @@ public class Users extends BaseDate {
         this.leftRentCount = leftRentCount;
     }
 
-    public Users(final String name, final OAuthProvider oAuthProvider, final Long oAuthId, final Integer leftRentCount) {
+    public User(final String name, final OAuthProvider oAuthProvider, final Long oAuthId, final Integer leftRentCount) {
         this(null, name, oAuthProvider, oAuthId, leftRentCount);
     }
 
-    public Users() {
+    public User() {
     }
 
     public boolean isAvailable() {
