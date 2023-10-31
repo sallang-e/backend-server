@@ -218,9 +218,12 @@ PATCH api.sallang-e.or.kr/admin/cycles/change-status
 
 ```json
 {
-  "cycleID": "jkl32hjherjfhuio2i2jk3kj3k"
+  "cycleID": "jkl32hjherjfhuio2i2jk3kj3k",
+  "status": "BROKEN"
 }
 ```
+
+- `status`는 `BROKEN`, `AVAILABLE` 중 선택 가능
 
 #### Response
 
