@@ -133,6 +133,8 @@ Location: /rent-history/1
 }
 ```
 
+---
+
 ### ✔ 살랑이 반납
 
 - 살랑이 디바이스에서 보내는 요청임.
@@ -164,6 +166,8 @@ Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 200 OK HTTP/1.1
 ```
 
+---
+
 ### ✔️ 살랑이 디바이스의 대여 여부 확인
 
 - 살랑이 디바이스에서 보내는 요청임.
@@ -174,7 +178,7 @@ Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 ##### URL & Header
 
 ```http request
-GET api.sallang-e.or.kr/is-rent
+GET api.sallang-e.or.kr/admin/is-rent
 ```
 
 ##### Body
@@ -195,10 +199,37 @@ GET api.sallang-e.or.kr/is-rent
 
 - 현재 어떤 유저든 해당 살랑이를 대여중이라면 `true를` 반환한다.
 
+---
+
 ### ✔️ 살랑이 디바이스의 상태 변경
 
 - 살랑이 디바이스의 상태는 `AVAILABLE`에서 고장난 경우 `BROKEN`으로 변경할 수 있다.
-- 고장난 살랑이를 고친 경우에 살랑이 디바이스의 상태를 `BROKEN`에서 `AVAILABLE`로 변경할 수 있다. 
+- 고장난 살랑이를 고친 경우에 살랑이 디바이스의 상태를 `BROKEN`에서 `AVAILABLE`로 변경할 수 있다.
 
 #### Request
+
+##### URL & Header
+
+```http request
+PATCH api.sallang-e.or.kr/admin/cycles/change-status
+```
+
+##### Body
+
+```json
+{
+  "cycleID": "jkl32hjherjfhuio2i2jk3kj3k"
+}
+```
+
+#### Response
+
+##### Header
+
+```http request
+200 OK HTTP/1.1
+```
+
+
+
 
