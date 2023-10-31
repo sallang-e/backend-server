@@ -36,6 +36,10 @@ public class Cycle extends BaseDate {
         this.status = CycleStatus.AVAILABLE;
     }
 
+    public void broken() {
+        this.status = CycleStatus.BROKEN;
+    }
+
     public boolean isRent() {
         return this.status == CycleStatus.RENT;
     }
