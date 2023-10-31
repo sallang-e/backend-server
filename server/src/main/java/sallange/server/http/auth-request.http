@@ -1,0 +1,4 @@
+### 카카오로 로그인 버튼 클릭
+GET {{host}}/api/login/kakao
+Content-Type: application/json
+

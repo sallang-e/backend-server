@@ -20,7 +20,7 @@ public class UserOAuthController {
 
     private final UserOAuthService userOAuthService;
 
-    @GetMapping("kakao")
+    @GetMapping("/kakao")
     public ResponseEntity<Void> loginKakao() {
         final String redirectUri = userOAuthService.loginRedirectUri();
         return ResponseEntity.status(FOUND)
