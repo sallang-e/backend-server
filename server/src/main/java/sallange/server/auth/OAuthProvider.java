@@ -8,7 +8,6 @@ public enum OAuthProvider {
     ;
 
     public static OAuthProvider from(final String oAuthProvider) {
-        System.out.println("oAuthProvider = " + oAuthProvider);
         return Arrays.stream(OAuthProvider.values())
                 .filter(it -> it.name().equalsIgnoreCase(oAuthProvider))
                 .findFirst()
