@@ -4,3 +4,6 @@
 [submodule "src/main/resources/security"]
 	path = src/main/resources/security
 	url = https://github.com/sallang-e/backend-server-submodule.git
+[submodule "server/src/main/resources/security"]
+	path = server/src/main/resources/security
+	url = https://github.com/sallang-e/backend-server-submodule.git
