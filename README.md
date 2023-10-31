@@ -70,7 +70,7 @@ Location: /rent-history/1
 ##### URL & Header
 
 ```http request
-401 BAD REQUEST HTTP/1.1
+400 BAD REQUEST HTTP/1.1
 ```
 
 ##### Body
@@ -87,7 +87,7 @@ Location: /rent-history/1
 ##### URL & Header
 
 ```http request
-401 BAD REQUEST HTTP/1.1
+400 BAD REQUEST HTTP/1.1
 ```
 
 ##### Body
@@ -104,7 +104,7 @@ Location: /rent-history/1
 ##### URL & Header
 
 ```http request
-401 BAD REQUEST HTTP/1.1
+400 BAD REQUEST HTTP/1.1
 ```
 
 ##### Body
@@ -121,7 +121,7 @@ Location: /rent-history/1
 ##### URL & Header
 
 ```http request
-401 BAD REQUEST HTTP/1.1
+400 BAD REQUEST HTTP/1.1
 ```
 
 ##### Body
