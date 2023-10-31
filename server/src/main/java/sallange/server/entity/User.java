@@ -40,6 +40,10 @@ public class User extends BaseDate {
         this(null, name, oAuthProvider, oAuthId, leftRentCount);
     }
 
+    public User(final String name, final OAuthProvider oAuthProvider, final Long oAuthId) {
+        this(null, name, oAuthProvider, oAuthId, 2);
+    }
+
     public User() {
     }
 
