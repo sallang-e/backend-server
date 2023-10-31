@@ -1,0 +1,4 @@
+### 서버 헬스 체크 요청
+GET {{host}}/health-check
+Content-Type: application/json
+

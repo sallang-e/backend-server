@@ -1,6 +1,7 @@
-POST localhost:8080/rent
+### 살랑이 대여 요청
+POST {{host}}/rent
 Content-Type: application/json
 
 {
   "cycleID": "1"
- }
+}
