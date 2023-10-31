@@ -1,5 +1,6 @@
 package sallange.server.auth.util;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.util.LinkedMultiValueMap;
@@ -8,13 +9,10 @@ import sallange.server.auth.OAuthProvider;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class KakaoLoginParams implements OAuthLoginParams {
 
     private String authorizationCode;
-
-    public KakaoLoginParams(String authorizationCode) {
-        this.authorizationCode = authorizationCode;
-    }
 
     @Override
     public OAuthProvider oAuthProvider() {
