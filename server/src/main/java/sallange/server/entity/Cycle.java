@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -32,12 +33,12 @@ public class Cycle extends BaseDate {
         this.status = CycleStatus.RENT;
     }
 
-    public void available() {
-        this.status = CycleStatus.AVAILABLE;
+    public void changeStatus(final CycleStatus status) {
+        this.status = status;
     }
 
-    public void broken() {
-        this.status = CycleStatus.BROKEN;
+    public void available() {
+        this.status = CycleStatus.AVAILABLE;
     }
 
     public boolean isRent() {

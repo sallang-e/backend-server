@@ -160,7 +160,7 @@ Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 
 ---
 
-### ✔️ 살랑이 디바이스의 대여 여부 확인
+### ✔️ 살랑이 디바이스의 상태(대여, 고장 여부) 확인
 
 - 살랑이 디바이스에서 보내는 요청임.
 - 살랑이가 대여 가능(`AVAILABLE`)한 경우에, 어떤 유저든 대여했을 경우에 대비해 1초마다 health check를 보내는 API다.
@@ -183,9 +183,17 @@ GET api.sallang-e.or.kr/admin/cycles/status
 
 #### Response
 
-```bash
+##### Header
+
+```http request
+200 OK HTTP/1.1
+```
+
+##### Body
+
+```json
 {
-	"status": "RENT"
+  "status": "RENT"
 }
 ```
 
@@ -203,7 +211,7 @@ GET api.sallang-e.or.kr/admin/cycles/status
 ##### URL & Header
 
 ```http request
-PATCH api.sallang-e.or.kr/admin/cycles/change-status
+POST api.sallang-e.or.kr/admin/cycles/change-status
 ```
 
 ##### Body

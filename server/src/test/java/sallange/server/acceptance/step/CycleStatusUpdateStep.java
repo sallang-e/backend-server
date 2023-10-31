@@ -16,7 +16,7 @@ public class CycleStatusUpdateStep {
                 .contentType(JSON)
 
                 .when()
-                .patch("/admin/cycles/change-status")
+                .post("/admin/cycles/change-status")
 
                 .then()
                 .log().all()

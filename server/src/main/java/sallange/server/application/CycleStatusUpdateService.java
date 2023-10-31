@@ -14,7 +14,7 @@ public class CycleStatusUpdateService {
 
     private final CycleRepository cycleRepository;
 
-    public void updateCycleStatus(final Long cycleId, final String status) {
+    public Cycle updateCycleStatus(final Long cycleId, final String status) {
         final Cycle cycle = findCycle(cycleId);
         final CycleStatus cycleStatus = CycleStatus.from(status);
 
@@ -26,13 +26,8 @@ public class CycleStatusUpdateService {
             throw new IllegalArgumentException("[ERROR] 어드민에서 업데이트 가능한 상태는 BROKEN, AVAILABLE만 가능합니다.");
         }
 
-        if (cycleStatus == CycleStatus.BROKEN) {
-            cycle.broken();
-        }
-
-        if (cycleStatus == CycleStatus.AVAILABLE) {
-            cycle.available();
-        }
+        cycle.changeStatus(cycleStatus);
+        return cycle;
     }
 
     private Cycle findCycle(final Long cycleId) {
