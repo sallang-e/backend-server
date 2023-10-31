@@ -23,9 +23,9 @@
 
 ### ✔️ 살랑이 반납
 
-- [ ] 살랑이를 성공적으로 반납했다는 응답을 반환한다.
-- [ ] 반환 기록을 `RETURN`으로 변경한다.
-- [ ] 살랑이의 상태를 `AVAILABLE`로 변경한다.
+- [x] 살랑이를 성공적으로 반납했다는 응답을 반환한다.
+- [x] 반환 기록을 `RETURN`으로 변경한다.
+- [x] 살랑이의 상태를 `AVAILABLE`로 변경한다.
 
 ## 💋 API
 
@@ -178,7 +178,7 @@ Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 ##### URL & Header
 
 ```http request
-GET api.sallang-e.or.kr/admin/is-rent
+GET api.sallang-e.or.kr/admin/cycles/status
 ```
 
 ##### Body
@@ -193,11 +193,11 @@ GET api.sallang-e.or.kr/admin/is-rent
 
 ```bash
 {
-	"isRent": "true"
+	"status": "RENT"
 }
 ```
 
-- 현재 어떤 유저든 해당 살랑이를 대여중이라면 `true를` 반환한다.
+- 해당 살랑이의 현재 상태를 `RENT`, `AVAILABLE`, `BROKEN` 중 하나로 응답한다.
 
 ---
 
