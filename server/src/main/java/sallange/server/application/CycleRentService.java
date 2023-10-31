@@ -25,10 +25,10 @@ public class CycleRentService {
     private final RentHistoryRepository rentHistoryRepository;
 
     public Long rent(final Long userId, final RentRequest request) {
-        final Users users = usersRepository.findById(userId)
+        final Users user = usersRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("[ERROR] 해당 아이디의 유저는 존재하지 않습니다."));
 
-        if (!users.isAvailable()) {
+        if (!user.isAvailable()) {
             throw new RentException(3, "[ERROR] 살랑이 사용 가능 회수가 없는 유저입니다!");
         }
 
@@ -48,8 +48,9 @@ public class CycleRentService {
         }
 
         cycle.rent();
+        user.reduceRentCount();
 
-        final RentHistory rentHistory = rentHistoryRepository.save(new RentHistory(users.getId(), cycle.getId(), RentType.RENT));
+        final RentHistory rentHistory = rentHistoryRepository.save(new RentHistory(user.getId(), cycle.getId(), RentType.RENT));
         return rentHistory.getId();
     }
 

@@ -45,6 +45,10 @@ public class Users extends BaseDate {
         return leftRentCount >= 1;
     }
 
+    public void reduceRentCount() {
+        this.leftRentCount--;
+    }
+
     public Long getId() {
         return id;
     }

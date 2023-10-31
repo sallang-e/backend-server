@@ -17,7 +17,7 @@
     - [x] 이미 다른 유저가 해당 살랑이를 대여중이면, 에러 코드 1를 반환한다.
     - [x] 해당 살랑이가 고장이거나, 비활성화 상태(회수 준비)면, 에러 코드 2를 반환한다.
 - [ ] 위의 과정을 모두 통과한 경우에, 살랑이를 대여한다.
-    - [ ] 유저의 대여 가능 회수를 1회 차감한다.
+    - [x] 유저의 대여 가능 회수를 1회 차감한다.
     - [ ] MQTT 서버를 호출한다.
     - [x] 성공 응답을 반환한다.
 
@@ -57,7 +57,7 @@ Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 
 1. 대여에 성공한 경우
 
-##### Header
+##### URL & Header
 
 ```http request
 201 CREATED HTTP/1.1
@@ -67,7 +67,7 @@ Location: /rent-history/1
 
 2. 대여 실패: 이미 다른사람이 대여중인 살랑이인 경우
 
-##### Header
+##### URL & Header
 
 ```http request
 401 BAD REQUEST HTTP/1.1
@@ -84,7 +84,7 @@ Location: /rent-history/1
 
 3. 대여 실패: 고장인 살랑이인 경우
 
-##### Header
+##### URL & Header
 
 ```http request
 401 BAD REQUEST HTTP/1.1
@@ -101,7 +101,7 @@ Location: /rent-history/1
 
 4. 대여 실패: 해당 유저에게 대여 가능 회수 없는 경우
 
-##### Header
+##### URL & Header
 
 ```http request
 401 BAD REQUEST HTTP/1.1
@@ -118,7 +118,7 @@ Location: /rent-history/1
 
 5. 대여 실패: 해당 유저가 이미 다른 살랑이를 대여중인 경우
 
-##### Header
+##### URL & Header
 
 ```http request
 401 BAD REQUEST HTTP/1.1
@@ -139,7 +139,7 @@ Location: /rent-history/1
 
 #### Request
 
-##### Header
+##### URL & Header
 
 ```http request
 POST api.sallang-e.or.kr/return-cycle
@@ -171,7 +171,7 @@ Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 
 #### Request
 
-##### Header
+##### URL & Header
 
 ```http request
 GET api.sallang-e.or.kr/is-rent
@@ -194,3 +194,11 @@ GET api.sallang-e.or.kr/is-rent
 ```
 
 - 현재 어떤 유저든 해당 살랑이를 대여중이라면 `true를` 반환한다.
+
+### ✔️ 살랑이 디바이스의 상태 변경
+
+- 살랑이 디바이스의 상태는 `AVAILABLE`에서 고장난 경우 `BROKEN`으로 변경할 수 있다.
+- 고장난 살랑이를 고친 경우에 살랑이 디바이스의 상태를 `BROKEN`에서 `AVAILABLE`로 변경할 수 있다. 
+
+#### Request
+
