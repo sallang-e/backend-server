@@ -1,3 +1,6 @@
 [submodule "backend-server-submodule"]
 	path = backend-server-submodule
 	url = https://github.com/sallang-e/backend-server-submodule.git
+[submodule "src/main/resources/security"]
+	path = src/main/resources/security
+	url = https://github.com/sallang-e/backend-server-submodule.git
