@@ -25,7 +25,7 @@ class RentHistoryRepositoryTest {
     private CycleRepository cycleRepository;
 
     @Autowired
-    private UsersRepository usersRepository;
+    private UserRepository userRepository;
 
     @Test
     void 유저_아이디와_대여_타입으로_조회한다() {
@@ -34,8 +34,8 @@ class RentHistoryRepositoryTest {
         final Cycle cycle3 = cycleRepository.save(new Cycle(CycleStatus.AVAILABLE));
         final Cycle cycle4 = cycleRepository.save(new Cycle(CycleStatus.AVAILABLE));
 
-        final User gitchan = usersRepository.save(new User("깃짱", OAuthProvider.KAKAO, 123L, 2));
-        final User hoonchan = usersRepository.save(new User("훈짱", OAuthProvider.KAKAO, 124L, 1));
+        final User gitchan = userRepository.save(new User("깃짱", OAuthProvider.KAKAO, 123L, 2));
+        final User hoonchan = userRepository.save(new User("훈짱", OAuthProvider.KAKAO, 124L, 1));
 
         final RentHistory rentHistory = rentHistoryRepository.save(new RentHistory(
                 gitchan.getId(),

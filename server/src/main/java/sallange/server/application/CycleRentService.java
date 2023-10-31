@@ -11,7 +11,7 @@ import sallange.server.entity.User;
 import sallange.server.exception.RentException;
 import sallange.server.repository.CycleRepository;
 import sallange.server.repository.RentHistoryRepository;
-import sallange.server.repository.UsersRepository;
+import sallange.server.repository.UserRepository;
 
 import java.util.NoSuchElementException;
 
@@ -20,12 +20,12 @@ import java.util.NoSuchElementException;
 @Transactional
 public class CycleRentService {
 
-    private final UsersRepository usersRepository;
+    private final UserRepository userRepository;
     private final CycleRepository cycleRepository;
     private final RentHistoryRepository rentHistoryRepository;
 
     public Long rent(final Long userId, final RentRequest request) {
-        final User user = usersRepository.findById(userId)
+        final User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("[ERROR] 해당 아이디의 유저는 존재하지 않습니다."));
 
         if (!user.isAvailable()) {

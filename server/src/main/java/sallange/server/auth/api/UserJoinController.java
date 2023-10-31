@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 import sallange.server.auth.api.request.UserJoinRequest;
 import sallange.server.auth.OAuthProvider;
 import sallange.server.entity.User;
-import sallange.server.repository.UsersRepository;
+import sallange.server.repository.UserRepository;
 
 import java.net.URI;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/users")
-public class UsersJoinController {
+public class UserJoinController {
 
-    private final UsersRepository usersRepository;
+    private final UserRepository userRepository;
 
     @PostMapping
     @Transactional
     public ResponseEntity<Void> join(@RequestBody final UserJoinRequest request) {
-        final User user = usersRepository.save(
+        final User user = userRepository.save(
                 new User(
                         request.getName(),
                         OAuthProvider.from(request.getoAuthProvider()),
