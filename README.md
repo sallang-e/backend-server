@@ -150,15 +150,7 @@ Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 
 ```
 
-##### Body
-
-```json
-{
-  "cycleID": "jkl32hjherjfhuio2i2jk3kj3k"
-}
-```
-
-- 마찬가지로, `cycleID는` 암호화된 형태임.
+- 해당 유저가 대여중인 살랑이를 조회해서 자동으로 반납함.
 
 #### Response
 
