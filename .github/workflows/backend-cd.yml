@@ -1,7 +1,6 @@
 name: 💋 살랑이 백엔드 배포 자동화
 
 on:
-  workflow_dispatch:
   push:
 	branches:
 	  - main
