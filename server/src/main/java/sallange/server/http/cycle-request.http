@@ -1,7 +1,29 @@
-### 살랑이 대여 요청
-POST {{host}}/rent
+### 유저 로그인 (테스트용)
+POST http://15.165.231.19:8080/test/users
 Content-Type: application/json
+
+{
+  "name": "깃짱",
+  "oAuthProvider": "KAKAO",
+  "oAuthId": 123,
+  "leftRentCount": 2
+}
+
+### 살랑이 생성 요청
+POST http://15.165.231.19:8080/admin/cycles
+Content-Type: application/json
+
+### 살랑이 대여 요청
+POST http://15.165.231.19:8080/cycles/rent
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk4ODk4NjQyfQ.YfedMD0NFfKrFv7NdcfYUhhf90vGhk2Qd6hx1548Hs8099k9xlUdueD_VEddxr_H6vV11Q4gnE4cyOYHplxs-w
 
 {
   "cycleID": "1"
 }
+
+### 살랑이 반납 요청
+POST http://15.165.231.19:8080/cycles/return-cycle
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk4ODk4NjQyfQ.YfedMD0NFfKrFv7NdcfYUhhf90vGhk2Qd6hx1548Hs8099k9xlUdueD_VEddxr_H6vV11Q4gnE4cyOYHplxs-w
+

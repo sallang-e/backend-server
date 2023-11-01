@@ -15,4 +15,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
             @Param("oAuthProvider") OAuthProvider oAuthProvider,
             @Param("oAuthId") Long oAuthId
     );
+
+    Optional<User> findByLoginId(String loginId);
 }

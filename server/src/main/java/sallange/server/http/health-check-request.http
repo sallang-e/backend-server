@@ -1,4 +1,3 @@
 ### 서버 헬스 체크 요청
-GET {{host}}/health-check
+GET http://15.165.231.19:8080/admin/health-check
 Content-Type: application/json
-
