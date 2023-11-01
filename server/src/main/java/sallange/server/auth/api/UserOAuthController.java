@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import sallange.server.auth.api.response.AuthTokensResponse;
-import sallange.server.auth.application.UserOAuthService;
 import sallange.server.auth.application.UserOAuthLoginService;
+import sallange.server.auth.application.UserOAuthService;
 import sallange.server.auth.util.KakaoLoginParams;
 
 import java.net.URI;

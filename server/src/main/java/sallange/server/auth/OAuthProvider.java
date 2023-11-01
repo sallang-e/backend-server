@@ -3,6 +3,7 @@ package sallange.server.auth;
 import java.util.Arrays;
 
 public enum OAuthProvider {
+
     KAKAO,
     GOOGLE,
     ;
