@@ -3,7 +3,7 @@ package sallange.server.auth.client;
 import sallange.server.auth.OAuthProvider;
 import sallange.server.auth.util.OAuthLoginParams;
 
-public interface UserOAuthClient {
+public interface OAuthClient {
 
     OAuthProvider oAuthProvider();
 
