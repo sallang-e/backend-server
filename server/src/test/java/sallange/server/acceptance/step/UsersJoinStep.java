@@ -9,6 +9,9 @@ import static io.restassured.http.ContentType.JSON;
 
 public class UsersJoinStep {
 
+    public static final UserJoinRequest USER_JOIN_REQUEST_GITCHAN = new UserJoinRequest("gitchan", "gitchan1234");
+    public static final UserJoinRequest USER_JOIN_REQUEST_HOONCHAN = new UserJoinRequest("hoonchan", "hoonchan5678");
+
     public static String 회원_가입_요청하고_액세스_토큰_반환(final UserJoinRequest request) {
         final ExtractableResponse<Response> response = 회원_가입_요청(request);
         return response.jsonPath().getString("accessToken");
@@ -21,7 +24,7 @@ public class UsersJoinStep {
                 .body(request)
 
                 .when()
-                .post("/test/users")
+                .post("/api/join")
 
                 .then()
                 .log().all()
