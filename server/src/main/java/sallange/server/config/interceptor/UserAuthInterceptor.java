@@ -12,7 +12,7 @@ import sallange.server.exception.UnAuthorizationException;
 import sallange.server.repository.UserRepository;
 
 @RequiredArgsConstructor
-//@Component
+@Component
 public class UserAuthInterceptor implements HandlerInterceptor {
 
     private final UserRepository userRepository;
