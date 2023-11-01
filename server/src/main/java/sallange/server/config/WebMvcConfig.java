@@ -17,13 +17,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private final UserAuthInterceptor userAuthInterceptor;
     private final UserAuthArgumentResolver userAuthArgumentResolver;
 
-    @Override
-    public void addInterceptors(final InterceptorRegistry registry) {
-        registry.addInterceptor(userAuthInterceptor)
-                .excludePathPatterns("/admin/**")
-                .excludePathPatterns("/test/**")
-                .excludePathPatterns("/api/login/**");
-    }
+//    @Override
+//    public void addInterceptors(final InterceptorRegistry registry) {
+//        registry.addInterceptor(userAuthInterceptor)
+//                .excludePathPatterns("/admin/**", "/test/**", "/api/login/**");
+//    }
 
     @Override
     public void addArgumentResolvers(final List<HandlerMethodArgumentResolver> resolvers) {
