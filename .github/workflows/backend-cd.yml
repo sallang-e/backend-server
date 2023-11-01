@@ -1,0 +1,54 @@
+name: 💋 살랑이 백엔드 배포 자동화
+
+on:
+  workflow_dispatch:
+  push:
+	branches:
+	  - main
+
+jobs:
+  backend-build-and-transfer:
+	runs-on: ubuntu-latest
+	defaults:
+	  run:
+		working-directory: ./backend
+
+	steps:
+	  - name: ✨ Checkout repository
+		uses: actions/checkout@v3
+		with:
+		  submodules: true
+		  token: ${{ secrets.SUBMODULE_TOKEN }}
+
+	  - name: ✨ JDK 17 설정
+		uses: actions/setup-java@v3
+		with:
+		  java-version: '17'
+		  distribution: 'temurin'
+
+	  - name: ✨ Gradle Caching
+		uses: actions/cache@v3
+		with:
+		  path: |
+			~/.gradle/caches
+			~/.gradle/wrapper
+		  key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+		  restore-keys: |
+			${{ runner.os }}-gradle-
+
+	  - name: ✨ Gradlew 권한 설정
+		run: chmod +x ./gradlew
+
+	  - name: ✨ Jar 파일 빌드
+		run: ./gradlew bootJar
+
+    - name: ✔️ 
+
+  backend-docker-pull-and-run:
+	runs-on: [self-hosted, main]
+	if: ${{ needs.backend-docker-build-and-push.result == 'success' }}
+	needs: [ backend-docker-build-and-push ]
+	steps:
+	  - name: ✨ 배포 스크립트 실행
+		run: |
+		  sh /home/ubuntu/deploy.sh
