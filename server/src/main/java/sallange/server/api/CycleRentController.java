@@ -27,7 +27,7 @@ public class CycleRentController {
         final Long rentHistoryId = cycleRentService.rent(user.getId(), request);
 
         return ResponseEntity
-                .created(URI.create("/rent-history/" + rentHistoryId))
+                .created(URI.create("/rent-histories/" + rentHistoryId))
                 .build();
     }
 }

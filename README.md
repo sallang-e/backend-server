@@ -37,7 +37,7 @@
 ##### URL & Header
 
 ```http request
-POST api.sallang-e.or.kr/rent
+POST /cycles/rent
 
 Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 ```
@@ -61,7 +61,7 @@ Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 ```http request
 201 CREATED HTTP/1.1
 
-Location: /rent-history/1
+Location: /rent-histories/1
 ```
 
 2. 대여 실패: 이미 다른사람이 대여중인 살랑이인 경우
@@ -143,7 +143,7 @@ Location: /rent-history/1
 ##### URL & Header
 
 ```http request
-POST api.sallang-e.or.kr/return-cycle
+POST /cycles/return-cycle
 
 Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 
@@ -169,7 +169,7 @@ Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 ##### URL & Header
 
 ```http request
-GET api.sallang-e.or.kr/admin/cycles/status
+GET /admin/cycles/status
 ```
 
 ##### Body
@@ -210,7 +210,7 @@ GET api.sallang-e.or.kr/admin/cycles/status
 ##### URL & Header
 
 ```http request
-POST api.sallang-e.or.kr/admin/cycles/change-status
+POST /admin/cycles/change-status
 ```
 
 ##### Body
@@ -232,6 +232,31 @@ POST api.sallang-e.or.kr/admin/cycles/change-status
 200 OK HTTP/1.1
 ```
 
+---
+
+### ✔️ 서버의 health check
+
+#### Request
+
+##### URL & Header
+
+```http request
+GET /admin/health-check
+```
+
+#### Response
+
+##### Header
+
+```http request
+200 OK HTTP/1.1
+```
+
+##### Body
+
+```json
+"up"
+```
 
 
 
