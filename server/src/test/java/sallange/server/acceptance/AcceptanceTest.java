@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import sallange.server.auth.util.AuthTokensGenerator;
 import sallange.server.common.DataCleaner;
 import sallange.server.common.DataClearExtension;
 import sallange.server.common.KorNamingConverter;
@@ -17,6 +18,9 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @ExtendWith(DataClearExtension.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 public class AcceptanceTest {
+
+    @Autowired
+    private AuthTokensGenerator authTokensGenerator;
 
     @LocalServerPort
     private int port;

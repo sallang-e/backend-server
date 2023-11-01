@@ -14,7 +14,7 @@ import java.net.URI;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/cycles")
+@RequestMapping("/admin/cycles")
 public class CycleCreateController {
 
     private final CycleRepository cycleRepository;

@@ -9,14 +9,16 @@ import static io.restassured.http.ContentType.JSON;
 
 public class CycleRentStep {
 
-    public static ExtractableResponse<Response> 살랑이_대여_요청(final Long userId, RentRequest request) {
+    public static ExtractableResponse<Response> 살랑이_대여_요청(final String accessToken, final RentRequest request) {
         return RestAssured.given()
                 .log().all()
                 .contentType(JSON)
+                .auth().preemptive()
+                .oauth2(accessToken)
                 .body(request)
 
                 .when()
-                .post("/rent/" + userId)
+                .post("/cycles/rent")
 
                 .then()
                 .log().all()

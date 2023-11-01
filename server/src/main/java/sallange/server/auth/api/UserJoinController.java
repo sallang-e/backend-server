@@ -7,34 +7,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sallange.server.auth.OAuthProvider;
 import sallange.server.auth.api.request.UserJoinRequest;
-import sallange.server.entity.User;
-import sallange.server.repository.UserRepository;
-
-import java.net.URI;
+import sallange.server.auth.api.response.AuthTokensResponse;
+import sallange.server.auth.application.UserJoinService;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/test/users")
 public class UserJoinController {
 
-    private final UserRepository userRepository;
+    private final UserJoinService userJoinService;
 
     @PostMapping
     @Transactional
-    public ResponseEntity<Void> join(@RequestBody final UserJoinRequest request) {
-        final User user = userRepository.save(
-                new User(
-                        request.getName(),
-                        OAuthProvider.from(request.getoAuthProvider()),
-                        request.getoAuthId(),
-                        request.getLeftRentCount()
-                )
-        );
-
+    public ResponseEntity<AuthTokensResponse> join(@RequestBody final UserJoinRequest request) {
         return ResponseEntity
-                .created(URI.create("/users/" + user.getId()))
-                .build();
+                .ok()
+                .body(userJoinService.join(request));
     }
 }

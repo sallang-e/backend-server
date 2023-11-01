@@ -8,7 +8,6 @@ import sallange.server.auth.api.response.AuthTokensResponse;
 import java.util.Date;
 
 @Component
-@Profile("!test")
 @RequiredArgsConstructor
 public class AuthTokensGenerator {
 
@@ -18,12 +17,12 @@ public class AuthTokensGenerator {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    public AuthTokensResponse generate(Long memberId) {
+    public AuthTokensResponse generate(Long userId) {
         long now = (new Date()).getTime();
         Date accessTokenExpiredAt = new Date(now + ACCESS_TOKEN_EXPIRE_TIME);
         Date refreshTokenExpiredAt = new Date(now + REFRESH_TOKEN_EXPIRE_TIME);
 
-        String subject = memberId.toString();
+        String subject = userId.toString();
 
         String accessToken = jwtTokenProvider.generate(subject, accessTokenExpiredAt);
 
@@ -36,7 +35,7 @@ public class AuthTokensGenerator {
         return jwtTokenProvider.isValidToken(accessToken);
     }
 
-    public Long extractMemberId(String accessToken) {
+    public Long extractUserId(String accessToken) {
         return Long.valueOf(jwtTokenProvider.extractSubject(accessToken));
     }
 }

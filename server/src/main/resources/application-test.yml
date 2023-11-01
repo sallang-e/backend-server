@@ -19,3 +19,6 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:test;Mode=MySql
 
+jwt:
+  secret-key: 0x232jkklkkld3232i1kdnhh3hb4bb4m43mk143i2ud8s9uieikk2kkkkj3h2ughjgghfsdxbnm12l2l435k7kjk2jkl312897bvccvxddfg
+

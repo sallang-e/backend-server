@@ -20,7 +20,7 @@ public class CycleCreateStep {
                 .contentType(JSON)
 
                 .when()
-                .post("/cycles")
+                .post("/admin/cycles")
 
                 .then()
                 .log().all()

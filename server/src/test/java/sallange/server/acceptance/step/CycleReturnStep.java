@@ -8,13 +8,15 @@ import static io.restassured.http.ContentType.JSON;
 
 public class CycleReturnStep {
 
-    public static ExtractableResponse<Response> 살랑이_반납_요청(final Long userId) {
+    public static ExtractableResponse<Response> 살랑이_반납_요청(final String accessToken) {
         return RestAssured.given()
                 .log().all()
+                .auth().preemptive()
+                .oauth2(accessToken)
                 .contentType(JSON)
 
                 .when()
-                .post("/return-cycle/" + userId)
+                .post("/cycles/return-cycle")
 
                 .then()
                 .log().all()
