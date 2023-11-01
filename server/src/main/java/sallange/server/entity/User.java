@@ -26,6 +26,8 @@ public class User extends BaseDate {
 
     @Column(name = "oauth_id")
     private Long oAuthId;
+    private String loginId;
+    private String encryptedPassword;
     private Integer leftRentCount;
 
     public User(final Long id, final String name, final OAuthProvider oAuthProvider, final Long oAuthId, final Integer leftRentCount) {
