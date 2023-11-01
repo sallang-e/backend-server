@@ -1,0 +1,43 @@
+name: 💋 살랑이 백엔드 빌드/테스트 CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ✔️ 리포지토리 가져오기
+        uses: actions/checkout@v3
+#         with:
+#           token: ${{ secrets.SUBMODULE_TOKEN }}
+#           submodules: recursive
+
+      - name: ✔️ JDK 17 설치
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: ✔️ Gradle 명령 실행을 위한 권한을 설정
+        run: chmod +x gradlew
+
+      - name: ✔️ Gradle build
+        run: ./gradlew build
+
+      - name: ✔️ 테스트 결과를 PR에 코멘트로 등록
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: '**/build/test-results/test/TEST-*.xml'
+
+      - name: ✔️ 테스트 실패 시, 실패한 코드 라인에 Check 코멘트를 등록
+        uses: mikepenz/action-junit-report@v3
+        if: always()
+        with:
+          report_paths: '**/build/test-results/test/TEST-*.xml'
+          token: ${{ github.token }}
