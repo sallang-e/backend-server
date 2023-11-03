@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Profile("!test")
-public class UserOAuthService {
+public class UserKakaoOAuthService {
 
     private final String clientId;
     private final String baseUri;
@@ -23,7 +23,7 @@ public class UserOAuthService {
     private final String redirectUri;
     private final Map<OAuthProvider, OAuthClient> clients;
 
-    public UserOAuthService(
+    public UserKakaoOAuthService(
             @Value("${oauth.kakao.client-id}") String clientId,
             @Value("${oauth.kakao.redirect-uri}") String redirectUri,
             @Value("${oauth.kakao.url.auth}") String baseUri,

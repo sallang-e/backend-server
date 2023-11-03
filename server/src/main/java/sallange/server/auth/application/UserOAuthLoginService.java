@@ -15,12 +15,12 @@ import sallange.server.repository.UserRepository;
 @Service
 public class UserOAuthLoginService {
 
-    private final UserOAuthService userOAuthService;
+    private final UserKakaoOAuthService userKakaoOAuthService;
     private final UserRepository userRepository;
     private final AuthTokensGenerator authTokensGenerator;
 
     public AuthTokensResponse login(final OAuthLoginParams params) {
-        final OAuthInfoResponse oAuthInfoResponse = userOAuthService.request(params);
+        final OAuthInfoResponse oAuthInfoResponse = userKakaoOAuthService.request(params);
         Long userId = findOrCreateUser(oAuthInfoResponse);
         return authTokensGenerator.generate(userId);
     }
