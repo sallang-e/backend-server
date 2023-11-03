@@ -1,9 +1,13 @@
-### 로그인 버튼 클릭
+### 카카오 로그인 버튼 클릭
 GET http://15.165.231.19:8080/api/login/kakao
 Content-Type: application/json
 
-### 살랑이 서버로부터 액세스 토큰 발급
+### 카카오 코드로 살랑이 서버로부터 액세스 토큰 발급
 GET http://15.165.231.19:8080/api/login/kakao/token?code=aH2sHl41OKXXCtyIRyU0CfDW3dgwl-16jTilcTDAvZJBGynZ9VXfLaBbgqQKKcleAAABi4oG62no6jj-qNQmaA
+Content-Type: application/json
+
+### 구글 로그인 버튼 클릭
+GET http://localhost:8080/api/login/google
 Content-Type: application/json
 
 ### 로컬 로그인 버튼 클릭
