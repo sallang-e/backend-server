@@ -12,6 +12,7 @@ import sallange.server.repository.RentHistoryRepository;
 import sallange.server.repository.UserRepository;
 
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -28,6 +29,25 @@ public class CycleReturnService {
         final Cycle cycle = findCycle(rentHistory.getCycleId());
         rentHistory.returnCycle();
         cycle.available();
+    }
+
+    public void returnCycleFromCycle(final Long cycleId) {
+        final Cycle cycle = findCycle(cycleId);
+        final RentHistory rentHistory = findRentHistory(cycleId);
+        final Long userId = rentHistory.getUserId();
+        final User user = findUser(userId);
+
+        rentHistory.returnCycle();
+        cycle.available();
+    }
+
+    private RentHistory findRentHistory(final Long cycleID) {
+        final Optional<RentHistory> rentHistory = rentHistoryRepository.findByCycleIdAndType(cycleID, RentType.RENT);
+        if (rentHistory.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 대여 이력이 없는 자전거는 반납할 수 없습니다.");
+        }
+
+        return rentHistory.get();
     }
 
     private User findUser(final Long userId) {
