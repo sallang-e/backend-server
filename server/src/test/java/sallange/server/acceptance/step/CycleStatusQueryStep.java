@@ -21,7 +21,7 @@ public class CycleStatusQueryStep {
                 .contentType(JSON)
 
                 .when()
-                .get("/admin/cycles/status")
+                .post("/admin/cycles/status")
 
                 .then()
                 .log().all()
