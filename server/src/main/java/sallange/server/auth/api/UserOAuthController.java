@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import sallange.server.auth.api.response.AuthTokensResponse;
-import sallange.server.auth.application.UserOAuthLoginService;
+import sallange.server.auth.application.UserGoogleOAuthService;
 import sallange.server.auth.application.UserKakaoOAuthService;
+import sallange.server.auth.application.UserOAuthLoginService;
+import sallange.server.auth.util.GoogleLoginParams;
 import sallange.server.auth.util.KakaoLoginParams;
 
 import java.net.URI;
@@ -23,6 +25,7 @@ import static org.springframework.http.HttpStatus.FOUND;
 public class UserOAuthController {
 
     private final UserKakaoOAuthService userKakaoOAuthService;
+    private final UserGoogleOAuthService userGoogleOAuthService;
     private final UserOAuthLoginService userOAuthLoginService;
 
     @GetMapping("/kakao")
@@ -34,10 +37,26 @@ public class UserOAuthController {
     }
 
     @GetMapping("/kakao/token")
-    public ResponseEntity<AuthTokensResponse> authorizeUser(
+    public ResponseEntity<AuthTokensResponse> authorizeKakaoUser(
             @RequestParam("code") String authorizationCode
     ) {
         final KakaoLoginParams params = new KakaoLoginParams(authorizationCode);
+        return ResponseEntity.ok(userOAuthLoginService.login(params));
+    }
+
+    @GetMapping("/google")
+    public ResponseEntity<Void> loginGoogle() {
+        final String redirectUri = userKakaoOAuthService.loginRedirectUri();
+        return ResponseEntity.status(FOUND)
+                .location(URI.create(redirectUri))
+                .build();
+    }
+
+    @GetMapping("/google/token")
+    public ResponseEntity<AuthTokensResponse> authorizeGoogleUser(
+            @RequestParam("code") String authorizationCode
+    ) {
+        final GoogleLoginParams params = new GoogleLoginParams(authorizationCode);
         return ResponseEntity.ok(userOAuthLoginService.login(params));
     }
 }
