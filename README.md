@@ -169,7 +169,7 @@ Authorization: Bearer b4m3wbdjwh12j3k4hj2j43mn234m_D32j4hej32j
 ##### URL & Header
 
 ```http request
-GET /admin/cycles/status
+POST /admin/cycles/status
 ```
 
 ##### Body
