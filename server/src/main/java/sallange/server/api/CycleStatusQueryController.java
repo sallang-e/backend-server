@@ -2,7 +2,7 @@ package sallange.server.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +18,7 @@ public class CycleStatusQueryController {
 
     private final CycleStatusQueryService cycleStatusQueryService;
 
-    @GetMapping("/status")
+    @PostMapping("/status")
     public ResponseEntity<CycleStatusQueryResponse> queryCycleStatus(
             @RequestBody CycleStatusQueryRequest request
     ) {
