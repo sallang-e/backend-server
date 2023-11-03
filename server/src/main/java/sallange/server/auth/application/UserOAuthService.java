@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import sallange.server.auth.OAuthProvider;
 import sallange.server.auth.client.OAuthClient;
+import sallange.server.auth.client.OAuthInfoResponse;
+import sallange.server.auth.util.OAuthLoginParams;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Profile("!test")
-public class UserGoogleOAuthService {
+public class UserOAuthService {
 
     private final String clientId;
     private final String baseUri;
@@ -21,11 +23,11 @@ public class UserGoogleOAuthService {
     private final String redirectUri;
     private final Map<OAuthProvider, OAuthClient> clients;
 
-    public UserGoogleOAuthService(
-            @Value("${oauth.google.client-id}") String clientId,
-            @Value("${oauth.google.redirect-uri}") String redirectUri,
-            @Value("${oauth.google.url.auth}") String baseUri,
-            @Value("${oauth.google.url.api}") String apiUri,
+    public UserOAuthService(
+            @Value("${oauth.kakao.client-id}") String clientId,
+            @Value("${oauth.kakao.redirect-uri}") String redirectUri,
+            @Value("${oauth.kakao.url.auth}") String baseUri,
+            @Value("${oauth.kakao.url.api}") String apiUri,
             List<OAuthClient> clients
     ) {
         this.clientId = clientId;
@@ -38,5 +40,20 @@ public class UserGoogleOAuthService {
                         Function.identity()
                 )
         );
+    }
+
+    public String loginRedirectUri() {
+        return baseUri
+                + "/oauth/authorize"
+                + "?response_type=code"
+                + "&client_id=" + clientId
+                + "&redirect_uri=" + redirectUri;
+    }
+
+    public OAuthInfoResponse request(final OAuthLoginParams params) {
+        OAuthClient client = clients.get(params.oAuthProvider());
+        String accessToken = client.requestAccessToken(params);
+
+        return client.requestOauthInfo(accessToken);
     }
 }
