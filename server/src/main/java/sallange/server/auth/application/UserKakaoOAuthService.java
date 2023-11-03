@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import sallange.server.auth.OAuthProvider;
-import sallange.server.auth.client.OAuthInfoResponse;
 import sallange.server.auth.client.OAuthClient;
+import sallange.server.auth.client.OAuthInfoResponse;
 import sallange.server.auth.util.OAuthLoginParams;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Profile("!test")
-public class UserOAuthService {
+public class UserKakaoOAuthService {
 
     private final String clientId;
     private final String baseUri;
@@ -23,7 +23,7 @@ public class UserOAuthService {
     private final String redirectUri;
     private final Map<OAuthProvider, OAuthClient> clients;
 
-    public UserOAuthService(
+    public UserKakaoOAuthService(
             @Value("${oauth.kakao.client-id}") String clientId,
             @Value("${oauth.kakao.redirect-uri}") String redirectUri,
             @Value("${oauth.kakao.url.auth}") String baseUri,
